@@ -72,9 +72,9 @@ class Collation {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false
       },
-      launched: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
+      artistAddress: {
+        type: DataTypes.STRING,
+        allowNull: false
       }
     });
   }
@@ -89,10 +89,10 @@ class Collation {
     });
   }
 
-  getAllUnlaunchedItems() {
+  getAllItems() {
     return new Promise((resolve, reject) => {
       this.model
-        .findAll({ where: { launched: false } })
+        .findAll()
         .then(models => models.map(model => model.toJSON()))
         .then(resolve)
         .catch(reject);
@@ -106,23 +106,6 @@ class Collation {
         .then(model => model.toJSON())
         .then(resolve)
         .catch(reject);
-    });
-  }
-
-  updateItem(id, update) {
-    return new Promise((resolve, reject) => {
-      this.model
-        .update(update, { where: { id }, returning: true })
-        .then(([, affectedRows]) => affectedRows[0])
-        .then(model => model.toJSON())
-        .then(resolve)
-        .catch(reject);
-    });
-  }
-
-  deleteItem(id) {
-    return new Promise((resolve, reject) => {
-      this.model.destroy({ where: { id } }).then(resolve).catch(reject);
     });
   }
 }

@@ -21,7 +21,7 @@ class CollationController {
    * @param {import('express').Request} req
    * @param {import('express').Response} res
    */
-  static async getAllUnlaunchedItems(req, res) {
+  static async getAllItems(req, res) {
     try {
       const result = await db.models.collation.getAllUnlaunchedItems();
       return res.status(200).json({ result });
@@ -43,17 +43,6 @@ class CollationController {
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
-  }
-
-  /**
-   *
-   * @param {import('express').Request} req
-   * @param {import('express').Response} res
-   */
-  static async updateItem(req, res) {
-    try {
-      const { params, body } = req;
-    } catch (error) {}
   }
 }
 

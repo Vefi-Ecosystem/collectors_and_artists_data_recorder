@@ -4,3 +4,4 @@ const { buildModels } = require("./models");
 const sequelize = new Sequelize();
 
 module.exports.models = buildModels(sequelize);
+module.exports.sequelize = sequelize;
