@@ -23,7 +23,7 @@ class CollationController {
    */
   static async getAllItems(req, res) {
     try {
-      const result = await db.models.collation.getAllUnlaunchedItems();
+      const result = await db.models.collation.getAllItems();
       return res.status(200).json({ result });
     } catch (error) {
       return res.status(500).json({ error: error.message });

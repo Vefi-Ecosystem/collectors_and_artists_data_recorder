@@ -1,6 +1,6 @@
 const express = require("express");
 const router = require("./router");
-const db = require('./db');
+const db = require("./db");
 const app = express();
 const port = parseInt(process.env.PORT || "2008");
 
